@@ -35,12 +35,10 @@
     border: 2px solid blue;
     position: relative;
     border-radius: 8px;
-
-
 }
 
 .img {
-    height: 30vh;
+    height: 25vh;
     width: 30%;
     margin: auto;
 }
@@ -79,4 +77,8 @@
 .hamberger {
     display: flex;
     flex-direction: column;
+}
+
+.xham {
+    margin-left: 10vw;
 }
