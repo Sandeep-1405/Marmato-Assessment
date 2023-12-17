@@ -3,8 +3,6 @@ const search = document.getElementById("search")
 const hamberger = document.getElementById("hamberger")
 const grid = document.getElementById("grid")
 
-
-
 function createelements(result) {
     let {
         product_image,
@@ -12,8 +10,6 @@ function createelements(result) {
         product_badge,
         product_variants
     } = result;
-
-
 
     let div1 = document.createElement("div")
     div1.classList.add("div1")
@@ -24,7 +20,6 @@ function createelements(result) {
     img.alt = "img"
     div1.appendChild(img);
 
-
     let div2 = document.createElement("div")
     div1.appendChild(div2)
 
@@ -32,7 +27,6 @@ function createelements(result) {
     h1.classList.add("heading")
     h1.textContent = product_title
     div2.appendChild(h1)
-
 
     let i = 1;
     for (let a of product_variants) {
@@ -42,7 +36,7 @@ function createelements(result) {
         p.classList.add("para")
         div2.appendChild(p)
         i++
-        console.log(a[s])
+        //console.log(a[s])
 
         let index = p.textContent.indexOf("/") //index of slash "/"
         function color(event) {
@@ -58,7 +52,6 @@ function createelements(result) {
 
         function size(event) {
             let l = p.textContent.length
-
             let slice = p.textContent.slice(index + 1, l)
             //console.log(slice)
             if (event.key === "Enter") {
@@ -79,6 +72,7 @@ function createelements(result) {
         }
         search.addEventListener("keydown", Sizematch)
     }
+
     if (product_badge.length >= 1) {
         let button = document.createElement("button");
         button.classList.add("btn")
@@ -101,12 +95,13 @@ function createelements(result) {
     grid.addEventListener("click", function() {
         items.classList.add("grid")
         div1.classList.add("col-6")
-
+        div1.classList.remove("xham")
     })
 
     hamberger.addEventListener("click", function() {
         items.classList.remove("grid")
         div1.classList.remove("col-6")
+        div1.classList.add("xham")
     })
 }
 
