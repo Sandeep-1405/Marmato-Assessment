@@ -41,8 +41,43 @@ function createelements(result) {
         p.textContent = (a[s])
         p.classList.add("para")
         div2.appendChild(p)
-        //console.log(a)
         i++
+        console.log(a[s])
+
+        let index = p.textContent.indexOf("/") //index of slash "/"
+        function color(event) {
+            let colorslice = p.textContent.slice(0, index)
+            //console.log(slice)
+            if (event.key === "Enter") {
+                if (search.value === colorslice) {
+                    p.style.backgroundColor = "#e303fc"
+                }
+            }
+        }
+        search.addEventListener("keydown", color)
+
+        function size(event) {
+            let l = p.textContent.length
+
+            let slice = p.textContent.slice(index + 1, l)
+            //console.log(slice)
+            if (event.key === "Enter") {
+                if (search.value === slice) {
+                    p.style.backgroundColor = "green"
+                }
+            }
+        }
+        search.addEventListener("keydown", size)
+
+        function Sizematch(event) {
+            let input = search.value
+            if (event.key === "Enter") {
+                if (input === p.textContent) {
+                    p.style.backgroundColor = "yellow"
+                }
+            }
+        }
+        search.addEventListener("keydown", Sizematch)
     }
     if (product_badge.length >= 1) {
         let button = document.createElement("button");
@@ -51,21 +86,14 @@ function createelements(result) {
         div1.appendChild(button)
     }
 
-
     items.appendChild(div1);
 
-
-
-    function searchfun() {
+    function searchfun(event) {
         let searchvalue = search.value
-        console.log(searchvalue)
-        let tolist = Object.values(product_variants)
-
-        if (searchvalue === product_title) {
-            h1.style.backgroundColor = "red";
-        }
-        if (tolist.includes(searchvalue)) {
-            console.log(true)
+        if (event.key === "Enter") {
+            if (searchvalue === product_title) {
+                h1.style.backgroundColor = "red";
+            }
         }
     }
     search.addEventListener("keydown", searchfun)
